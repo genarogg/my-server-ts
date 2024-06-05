@@ -2,14 +2,15 @@
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
-    "outDir": "./build",
+    "outDir": "./dist",
     "strict": true,
     "esModuleInterop": true,
     "typeRoots": ["node_modules/@types", "src/types"],
 
     "baseUrl": ".",
     "paths": {
-      "@route/*": ["src/routers/*"]
+      "@route/*": ["src/routers/*"],
+      "@controller/*": ["src/routers/*"]
     }
   },
 

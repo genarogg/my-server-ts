@@ -1,3 +1,7 @@
+// Limpia la consola
+import clear from "console-clear";
+clear();
+
 import express, { Request, Response } from "express";
 
 import chalk from "chalk";
