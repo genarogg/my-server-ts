@@ -1,4 +1,5 @@
 import express, { Request, Response } from "express";
+
 import chalk from "chalk";
 import cors from "cors";
 
@@ -30,9 +31,10 @@ sequelize.sync({ logging: false }).then(() => {
   console.log(chalk.cyan("db conectada!"));
 });
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello World!");
-});
+// Importar rutas
+import { inicioRouter } from "@route/index";
+
+app.use("/", inicioRouter);
 
 // Middleware de manejo de errores
 app.use((err: any, req: Request, res: Response, next: Function) => {
