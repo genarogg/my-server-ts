@@ -8,7 +8,7 @@ import chalk from "chalk";
 import cors from "cors";
 
 // variables de entorno
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 const CORS_URL = process.env.CORS_URL || "*";
 
 // Crear una instancia de express
@@ -40,6 +40,8 @@ import { inicioRouter } from "@route/index";
 
 app.use("/", inicioRouter);
 
+import sendEmail from "./src/email/sendEmail";
+
 // Middleware de manejo de errores
 app.use((err: any, req: Request, res: Response, next: Function) => {
   console.error(err.stack);
@@ -50,4 +52,9 @@ app.listen(PORT, () => {
   console.log(
     chalk.green.bold(`El servidor esta corriendo http://localhost:${PORT}`)
   );
+  sendEmail({
+    email: "genarrogg@gmail.com",
+    subject: "Subject",
+    text: "Email text",
+  });
 });
