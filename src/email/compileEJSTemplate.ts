@@ -1,34 +1,36 @@
-import ejs from "ejs";
-import { join } from "path";
+import * as util from "util";
+import * as ejs from "ejs";
+import path from "path";
+
+const renderFileAsync: (
+  path: string,
+  data?: object,
+  options?: ejs.Options
+) => Promise<string> = util.promisify(ejs.renderFile);
 
 /**
  * Compila un archivo EJS con los datos proporcionados y devuelve el HTML resultante.
  *
  * @param templateName Nombre del archivo EJS (sin la extensión .ejs).
  * @param data Objeto con los datos que se pasarán al template EJS.
- * @param callback Función de callback que se llama con el error o el HTML resultante.
+ * @returns {Promise<string>} Una promesa que resuelve con el HTML resultante.
  */
 
-const compileEJSTemplate = (
+const compileEJSTemplate = async (
   templateName: string,
-  data: object,
-  callback: (err: Error | null, html?: string) => void
-) => {
-  // Define la ruta al archivo EJS basado en el nombre proporcionado
-  const templatePath = join(__dirname, `${templateName}.ejs`);
+  data: object
+): Promise<string> => {
+  const templatePath = path.join(__dirname, `/ejs/${templateName}.ejs`);
 
-  // Lee el archivo EJS y compila el template con los datos proporcionados
-  ejs.renderFile(templatePath, data, (err, html) => {
-    if (err) {
-      console.error(
-        `Error al renderizar el template EJS (${templateName}):`,
-        err
-      );
-      return callback(err);
-    }
-    // Retorna el HTML compilado
-    callback(null, html);
-  });
+  try {
+    const html = await renderFileAsync(templatePath, data);
+    return html;
+  } catch (err) {
+    // Lanza el error para que pueda ser manejado por el llamador
+    throw new Error(
+      `Error al renderizar el template EJS (${templateName}): ${err}`
+    );
+  }
 };
 
 export default compileEJSTemplate;

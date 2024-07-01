@@ -40,7 +40,7 @@ import { inicioRouter } from "@route/index";
 
 app.use("/", inicioRouter);
 
-import sendEmail from "./src/email/sendEmail";
+import { sendEmail } from "@email/index";
 
 // Middleware de manejo de errores
 app.use((err: any, req: Request, res: Response, next: Function) => {
@@ -54,7 +54,8 @@ app.listen(PORT, () => {
   );
   sendEmail({
     email: "genarrogg@gmail.com",
-    subject: "Subject",
-    text: "Email text",
+    subject: "subject",
+    templateName: "pass",
+    templateData: { name: "Genaro" },
   });
 });

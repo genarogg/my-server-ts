@@ -1,46 +1,50 @@
-import nodemailer from "nodemailer";
+import { mailer, compileEJSTemplate } from "./index";
 
-import dotenv from "dotenv";
-dotenv.config();
-
-const { EMAIL_USER, EMAIL_PASSWORD, EMAIL_HOST, EMAIL_PORT } = process.env;
-
-interface EmailOptions {
+interface sendEmailArgs {
   email: string;
   subject: string;
-  text: string;
+  templateName: string;
+  templateData: object;
 }
 
 /**
- * Envía un email utilizando las opciones especificadas.
+ * Envía un correo electrónico utilizando una plantilla EJS.
  *
- * @param {EmailOptions} options - Un objeto que contiene las opciones de email.
- * @param {string} options.email - La dirección de email del destinatario.
- * @param {string} options.subject - El asunto del email.
- * @param {string} options.text - El cuerpo del email en texto plano.
- * @returns {Promise<void>} Una promesa que se resuelve cuando el email ha sido enviado.
+ * @param {sendEmailArgs} args - Los argumentos necesarios para enviar el correo electrónico.
+ * @param {string} args.email - La dirección de correo electrónico del destinatario.
+ * @param {string} args.subject - El asunto del correo electrónico.
+ * @param {string} args.templateName - El nombre de la plantilla a utilizar.
+ * @param {object} args.templateData - Los datos para rellenar en la plantilla.
+ * @returns {Promise<void>} Una promesa que se resuelve cuando el correo electrónico ha sido enviado.
+ *
+ * Como usarlo:
+ *
+ * sendEmail({
+ *     email: "example@example.com"
+ *     subject: "subject",
+ *     templateName: "templateName",
+ *     templateData: { *data* }
+ * })
  */
 
-const sendEmail = async ({ email, subject, text }: EmailOptions): Promise<void> => {
+const sendEmail = async ({
+  email,
+  subject,
+  templateName,
+  templateData,
+}: sendEmailArgs): Promise<void> => {
   try {
-    const transporter = nodemailer.createTransport({
-      host: EMAIL_HOST,
-      secure: true,
-      port: Number(EMAIL_PORT),
-      auth: {
-        user: EMAIL_USER,
-        pass: EMAIL_PASSWORD,
-      },
-    });
+    // Genera el HTML utilizando compileEJSTemplate
+    const html = await compileEJSTemplate(templateName, templateData);
 
-    await transporter.sendMail({
-      from: EMAIL_USER,
-      to: email,
+    // Envía el email con el HTML generado
+    await mailer({
+      email,
       subject,
-      text,
+      html,
     });
   } catch (error) {
-    console.error(error);
+    console.error("Error al enviar el email:", error);
   }
 };
 

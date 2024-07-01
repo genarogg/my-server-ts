@@ -10,7 +10,8 @@
     "baseUrl": ".",
     "paths": {
       "@route/*": ["src/routers/*"],
-      "@controller/*": ["src/routers/*"]
+      "@controller/*": ["src/routers/*"],
+      "@email/*": ["src/email/*"],
     }
   },
 
