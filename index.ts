@@ -52,10 +52,4 @@ app.listen(PORT, () => {
   console.log(
     chalk.green.bold(`El servidor esta corriendo http://localhost:${PORT}`)
   );
-  sendEmail({
-    email: "genarrogg@gmail.com",
-    subject: "subject",
-    templateName: "pass",
-    templateData: { name: "Genaro" },
-  });
 });
