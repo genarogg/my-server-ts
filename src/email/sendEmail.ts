@@ -11,7 +11,17 @@ interface EmailOptions {
   text: string;
 }
 
-const sendEmail = async ({ email, subject, text }: EmailOptions) => {
+/**
+ * Envía un email utilizando las opciones especificadas.
+ *
+ * @param {EmailOptions} options - Un objeto que contiene las opciones de email.
+ * @param {string} options.email - La dirección de email del destinatario.
+ * @param {string} options.subject - El asunto del email.
+ * @param {string} options.text - El cuerpo del email en texto plano.
+ * @returns {Promise<void>} Una promesa que se resuelve cuando el email ha sido enviado.
+ */
+
+const sendEmail = async ({ email, subject, text }: EmailOptions): Promise<void> => {
   try {
     const transporter = nodemailer.createTransport({
       host: EMAIL_HOST,
