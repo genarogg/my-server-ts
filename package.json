@@ -2,10 +2,12 @@
   "name": "nemesis-express",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "dev": "ts-node-dev -r tsconfig-paths/register index.ts",
     "start-build": "tsc && node dist/index.js",
-    "start": "ts-node -r tsconfig-paths/register index.ts"
+    "start": "ts-node -r tsconfig-paths/register index.ts",
+    "electron": "electron electron.js"
   },
   "keywords": [],
   "author": {
@@ -20,6 +22,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
+    "electron": "^31.2.1",
     "express": "^4.19.2",
     "nodemailer": "^6.9.14",
     "sequelize": "^6.37.3",
