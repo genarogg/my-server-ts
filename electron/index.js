@@ -44,4 +44,4 @@ app.on("window-all-closed", () => {
   }
 });
 
-require("../dist/index");
+require("../build/index");
