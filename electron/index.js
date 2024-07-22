@@ -11,12 +11,13 @@ const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: 1280,
     height: 720,
-    webPreferences: {
-      preload: path.join(__dirname, "preload.js"),
-    },
-    setMenuBarVisibility: false,
-    loadURL: "http://localhost:4000",
   });
+
+  // Esto oculta la barra de menús
+  mainWindow.setMenuBarVisibility(false);
+
+  // cargar servidor
+  mainWindow.loadURL("http://localhost:4000");
 };
 
 // This method will be called when Electron has finished
