@@ -53,3 +53,5 @@ app.listen(PORT, () => {
     chalk.green.bold(`El servidor esta corriendo http://localhost:${PORT}`)
   );
 });
+
+export default app;
