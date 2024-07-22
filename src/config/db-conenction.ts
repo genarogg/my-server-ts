@@ -1,10 +1,12 @@
 import { Sequelize } from "sequelize";
 import chalk from "chalk";
 
+import path from "path";
+
 const sequelize = new Sequelize({
   dialect: "sqlite",
   /* storage: ":memory:", */
-  storage: "./src/config/db.sqlite",
+  storage: path.join(__dirname, "/db.sqlite"),
   logging: false,
 });
 
