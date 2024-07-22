@@ -36,7 +36,7 @@ sequelize.sync({ logging: false }).then(() => {
 });
 
 // Importar rutas
-import { inicioRouter } from "@route/index";
+import { inicioRouter } from "@router";
 
 app.use("/", inicioRouter);
 
