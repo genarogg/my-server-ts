@@ -5,14 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "ts-node-dev -r tsconfig-paths/register index.ts",
-<<<<<<< HEAD
     "start": "node dist/index.js",
     "build": "tsc && tsc-alias -p tsconfig.json",
     "production": "npm run build && npm run start",
-=======
-    "start-build": "tsc && node dist/index.js",
-    "start": "ts-node -r tsconfig-paths/register index.ts",
->>>>>>> e0552fa6d7e7bbf72a8eb3a0c79ac61590c03776
     "electron": "electron electron.js"
   },
   "keywords": [],
