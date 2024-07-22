@@ -9,7 +9,8 @@
     "production": "npm run build && npm run start",
     "app": "npm run build && electron-forge start",
     "package": "electron-forge package",
-    "make": "electron-forge make"
+    "make": "electron-forge make",
+    "compile": "npm run build && electron-packager . lindo-gatito --icon=./src/public/lindo-gatito.ico --arch=x64"
   },
   "keywords": [],
   "author": {

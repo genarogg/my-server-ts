@@ -40,6 +40,7 @@ import { inicioRouter } from "@router";
 
 app.use("/", inicioRouter);
 
+
 import { sendEmail } from "@email/index";
 
 // Middleware de manejo de errores
