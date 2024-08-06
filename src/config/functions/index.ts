@@ -1,3 +1,4 @@
 import log from "./log";
+import path from "path";
 
-export { log };
+export { log, path };

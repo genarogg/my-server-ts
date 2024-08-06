@@ -4,9 +4,9 @@ clear();
 
 import express, { Request, Response } from "express";
 
-import { log } from "@fn";
+import { log, path } from "@fn";
 import cors from "cors";
-import path from "path";
+
 // variables de entorno
 const PORT = process.env.PORT || 4000;
 const CORS_URL = process.env.CORS_URL || "*";
