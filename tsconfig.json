@@ -7,10 +7,11 @@
     "esModuleInterop": true,
     "typeRoots": ["node_modules/@types", "src/types"],
 
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "paths": {
-      "@router": ["src/routers/index.ts"],
-      "@email/*": ["src/email/*"]
+      "@fn": ["config/functions/index.ts"],
+      "@router": ["routers/index.ts"],
+      "@email/*": ["email/*"]
     }
   },
 

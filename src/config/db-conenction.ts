@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import chalk from "chalk";
+import { log } from "@fn";
 
 import path from "path";
 
@@ -12,7 +12,7 @@ const sequelize = new Sequelize({
 
 sequelize
   .sync()
-  .then(() => console.log(chalk.cyan("Base de datos y tablas creadas")))
-  .catch((error) => console.error(chalk.red("Error al sincronizar:", error)));
+  .then(() => log.cyan("Base de datos y tablas creadas"))
+  .catch((error) => log.red("Error al sincronizar:", error));
 
 export default sequelize;

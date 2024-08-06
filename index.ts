@@ -4,7 +4,7 @@ clear();
 
 import express, { Request, Response } from "express";
 
-import chalk from "chalk";
+import { log } from "@fn";
 import cors from "cors";
 import path from "path";
 // variables de entorno
@@ -32,7 +32,7 @@ app.use(express.urlencoded({ extended: true }));
 import sequelize from "./src/config/db-conenction";
 
 sequelize.sync({ logging: false }).then(() => {
-  console.log(chalk.cyan("db conectada!"));
+  log.cyan("db conectada!");
 });
 
 // Importar rutas
@@ -40,7 +40,7 @@ import { inicioRouter } from "@router";
 
 app.use("/", inicioRouter);
 
-import { sendEmail } from "@email/index";
+// import { sendEmail } from "@email/index";
 
 // Middleware de manejo de errores
 app.use((err: any, req: Request, res: Response, next: Function) => {
@@ -49,7 +49,5 @@ app.use((err: any, req: Request, res: Response, next: Function) => {
 });
 
 app.listen(PORT, () => {
-  console.log(
-    chalk.green.bold(`El servidor esta corriendo http://localhost:${PORT}`)
-  );
+  log.green(`El servidor esta corriendo http://localhost:${PORT}`);
 });
