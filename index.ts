@@ -21,8 +21,13 @@ app.use(cors({ origin: CORS_URL }));
 app.use(express.static(path.join(__dirname, "src/public")));
 
 // Configurar EJS como motor de vistas
-app.set("view engine", "ejs");
+/* app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "src/views")); */
+
+// Configurar express-react-views como motor de vistas
 app.set("views", path.join(__dirname, "src/views"));
+app.set("view engine", "jsx");
+app.engine("jsx", require("express-react-views").createEngine());
 
 // Middleware para analizar el cuerpo de las solicitudes
 app.use(express.json());
@@ -38,7 +43,11 @@ sequelize.sync({ logging: false }).then(() => {
 // Importar rutas
 import { inicioRouter } from "@router";
 
-app.use("/", inicioRouter);
+/* app.use("/", inicioRouter); */
+
+app.get("/", (req, res) => {
+  res.render("index");
+});
 
 // import { sendEmail } from "@email/index";
 
