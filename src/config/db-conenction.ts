@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import { log, path } from "@fn";
+import { log, path } from "functions";
 
 const sequelize = new Sequelize({
   dialect: "sqlite",

@@ -9,9 +9,13 @@
 
     "baseUrl": "./src",
     "paths": {
-      "@fn": ["config/functions/index.ts"],
+      "@fn": ["functions/index.ts"],
+      "@email/*": ["email/*"],
+
+      "@controller/*": ["controllers/*"],
       "@router": ["routers/index.ts"],
-      "@email/*": ["email/*"]
+      "@models": ["models/index.ts"],
+      "@db": ["config/db-conenction.ts"]
     }
   },
 

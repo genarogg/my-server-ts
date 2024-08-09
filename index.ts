@@ -4,7 +4,7 @@ clear();
 
 import express, { Request, Response } from "express";
 
-import { log, path } from "@fn";
+import { log, path } from "functions";
 import cors from "cors";
 
 // variables de entorno
@@ -29,7 +29,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //Conexión a la base de datos
-import sequelize from "./src/config/db-conenction";
+import sequelize from "@db";
 
 sequelize.sync({ logging: false }).then(() => {
   log.cyan("db conectada!");
