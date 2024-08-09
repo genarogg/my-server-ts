@@ -27,7 +27,6 @@
     "nodemailer": "^6.9.14",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "react-engine": "^4.5.1",
     "sequelize": "^6.37.3",
     "sqlite3": "^5.1.7",
     "ts-node": "^10.9.2"

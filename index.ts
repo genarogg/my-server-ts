@@ -46,7 +46,7 @@ import { inicioRouter } from "@router";
 /* app.use("/", inicioRouter); */
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("index", { data: "Hola mundo" });
 });
 
 // import { sendEmail } from "@email/index";
