@@ -4,7 +4,7 @@ clear();
 
 import express, { Request, Response } from "express";
 
-import { log, path } from "functions";
+import { log, path } from "@fn";
 import cors from "cors";
 
 // variables de entorno
@@ -20,14 +20,15 @@ app.use(cors({ origin: CORS_URL }));
 // Configurar el directorio public
 app.use(express.static(path.join(__dirname, "src/public")));
 
-// Configurar EJS como motor de vistas
-/* app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "src/views")); */
-
 // Configurar express-react-views como motor de vistas
+import { createEngine } from "express-react-views";
 app.set("views", path.join(__dirname, "src/views"));
-app.set("view engine", "jsx");
-app.engine("jsx", require("express-react-views").createEngine());
+app.set("view engine", "tsx");
+app.engine("tsx", createEngine());
+
+// Configurar EJS como motor de vistas
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "src/views"));
 
 // Middleware para analizar el cuerpo de las solicitudes
 app.use(express.json());
@@ -43,13 +44,12 @@ sequelize.sync({ logging: false }).then(() => {
 // Importar rutas
 import { inicioRouter } from "@router";
 
-/* app.use("/", inicioRouter); */
-
-app.get("/", (req, res) => {
-  res.render("index", { data: "Hola mundo" });
-});
+app.use("/", inicioRouter);
 
 // import { sendEmail } from "@email/index";
+
+import appDB from "./src/admin/db/src/routers/admindb";
+app.use("/admin-back/db", appDB);
 
 // Middleware de manejo de errores
 app.use((err: any, req: Request, res: Response, next: Function) => {
