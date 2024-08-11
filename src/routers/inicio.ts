@@ -1,8 +1,8 @@
-import express from "express";
+import { Request, Response, Router } from "express";
 
-const router = express.Router();
+const router: Router = Router();
 
-router.get("/", (req, res) => {
+router.get("/", (req: Request, res: Response) => {
   res.render("inicio", { data: "Hola mundo" });
 });
 
