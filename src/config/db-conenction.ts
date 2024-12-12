@@ -9,7 +9,11 @@ const sequelize = new Sequelize({
 });
 
 sequelize
-  .sync()
+  .query("CREATE DATABASE IF NOT EXISTS hola")
+  .then(() => {
+    log.cyan("Base de datos 'hola' creada o ya existe");
+    return sequelize.sync();
+  })
   .then(() => log.cyan("Base de datos y tablas creadas"))
   .catch((error) => log.red("Error al sincronizar:", error));
 
