@@ -1,10 +1,19 @@
+// Limpia la consola
+import clear from "console-clear";
+clear();
+
 import express from 'express';
 import path from 'path';
+import cors from "cors";
 
 const app = express();
 const PORT = process.env.PORT || 4000;
+const CORS_URL = process.env.CORS_URL || "*";
 
 app.use(express.static(path.join(__dirname, "src/public")));
+
+// Usa cors como middleware
+app.use(cors({ origin: CORS_URL }));
 
 // Configurar EJS como motor de vistas
 app.set("view engine", "ejs");
