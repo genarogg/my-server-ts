@@ -18,6 +18,7 @@
   "description": "",
   "dependencies": {
     "@prisma/client": "^6.2.1",
+    "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "console-clear": "^1.1.1",
     "cors": "^2.8.5",
@@ -31,9 +32,11 @@
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@types/console-clear": "^1.1.4",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.7",
     "@types/node": "^20.14.2",
     "@types/nodemailer": "^6.4.15",
     "concurrently": "^8.2.2",

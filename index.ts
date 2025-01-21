@@ -6,6 +6,8 @@ import express from 'express';
 import path from 'path';
 import cors from "cors";
 
+import { log } from "@fn"
+
 const app = express();
 const PORT = process.env.PORT || 4000;
 const CORS_URL = process.env.CORS_URL || "*";
@@ -30,10 +32,10 @@ const prisma = new PrismaClient();
 
 prisma.$connect()
   .then(() => {
-    console.log("db conectada!");
+    log.green("db conectada!");
   })
   .catch((error) => {
-    console.error("Error al conectar a la db:", error);
+    log.red("Error al conectar a la db:", error);
   });
 
 // Importar rutas
@@ -50,5 +52,5 @@ app.use((err: any, req: any, res: any, next: any) => {
 
 
 app.listen(PORT, () => {
-  console.log(`El servidor esta corriendo en http://localhost:${PORT}`);
+  log.cyan(`El servidor esta corriendo en http://localhost:${PORT}`);
 });
