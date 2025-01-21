@@ -12,7 +12,7 @@ const red = (text: string) => {
   return console.log(colors.red(text));
 };
 
-const log: any = {
+const log = {
   green,
   cyan,
   red,

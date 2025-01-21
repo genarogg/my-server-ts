@@ -35,7 +35,7 @@ prisma.$connect()
     log.green("db conectada!");
   })
   .catch((error) => {
-    log.red("Error al conectar a la db:", error);
+    log.red(`Error al conectar a la db: ${error}`);
   });
 
 // Importar rutas

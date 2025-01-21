@@ -1,6 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
-import { User } from "@models"; // Asegúrate de que la ruta sea correcta
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
 
 const verificarToken = async (req: Request, res: Response, next: NextFunction) => {
     const JWTSECRETO = process.env.JWTSECRETO || "jwt-secret";
@@ -19,8 +21,10 @@ const verificarToken = async (req: Request, res: Response, next: NextFunction) =
             return res.status(401).json({ message: "El token no contiene un id de usuario válido" });
         }
 
-        // Buscar al usuario en la base de datos
-        const usuario = await User.findByPk(payload.id);
+        // Buscar al usuario en la base de datos usando Prisma
+        const usuario = await prisma.user.findUnique({
+            where: { id: payload.id },
+        });
 
         if (!usuario) {
             return res.status(404).json({ message: "Usuario no encontrado" });
@@ -28,8 +32,8 @@ const verificarToken = async (req: Request, res: Response, next: NextFunction) =
 
         const body = {
             ...req.body,
-            user: usuario.dataValues,
-        }
+            user: usuario,
+        };
 
         req.body = body;
 
@@ -37,7 +41,8 @@ const verificarToken = async (req: Request, res: Response, next: NextFunction) =
     } catch (err) {
         console.log(err);
         return res.status(401).json({
-            message: "Error al verificar el token", type: "error"
+            message: "Error al verificar el token",
+            type: "error"
         });
     }
 };

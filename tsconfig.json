@@ -6,19 +6,36 @@
     "outDir": "./build",
     "strict": true,
     "esModuleInterop": true,
-    "typeRoots": ["./node_modules/@types", "./src/types"],
-
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/types"
+    ],
     "baseUrl": "./src",
     "paths": {
-      "@fn": ["functions/index.ts"],
-      "@email/*": ["email/*"],
-      "@controller/*": ["controllers/*"],
-      "@router": ["routers/index.ts"],
-      "@models": ["models/index.ts"]
+      "@fn": [
+        "functions/index.ts"
+      ],
+      "@email/*": [
+        "email/*"
+      ],
+      "@controller/*": [
+        "controllers/*"
+      ],
+      "@router": [
+        "routers/index.ts"
+      ],
+      "@models": [
+        "models/index.ts"
+      ]
     }
   },
-
-  "include": ["*.ts", "**/*.ts","src/functions/buildPrisma.ts"],
-  "exclude": ["node_modules"],
-  "incremental": true,
+  "include": [
+    "*.ts",
+    "**/*.ts",
+    "*/**/*.tsx",
+    "src/functions/buildPrisma.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
 }
