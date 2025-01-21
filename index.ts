@@ -15,9 +15,10 @@ app.use(express.static(path.join(__dirname, "src/public")));
 // Usa cors como middleware
 app.use(cors({ origin: CORS_URL }));
 
-// Configurar EJS como motor de vistas
-app.set("view engine", "ejs");
+// Configurar jsx como motor de vistas
+app.set('view engine', 'jsx');
 app.set("views", path.join(__dirname, "src/views"))
+app.engine('jsx', require('express-react-views').createEngine());
 
 // Middleware para analizar el cuerpo de las solicitudes
 app.use(express.json());
@@ -37,6 +38,7 @@ prisma.$connect()
 
 // Importar rutas
 import { inicioRouter } from "@router";
+// import inicioRouter from "./src/routers/inicio";
 
 app.use("/", inicioRouter);
 

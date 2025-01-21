@@ -18,7 +18,7 @@
     }
   },
 
-  "include": ["*.ts", "src/functions/buildPrisma.ts"],
+  "include": ["*.ts", "**/*.ts","src/functions/buildPrisma.ts"],
   "exclude": ["node_modules"],
   "incremental": true,
 }
