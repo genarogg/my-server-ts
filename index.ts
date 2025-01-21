@@ -1,7 +1,6 @@
 import express from 'express';
 import path from 'path';
 
-
 const app = express();
 const PORT = process.env.PORT || 4000;
 
@@ -41,6 +40,4 @@ app.use((err: any, req: any, res: any, next: any) => {
 
 app.listen(PORT, () => {
   console.log(`El servidor esta corriendo en http://localhost:${PORT}`);
-
- 
 });
