@@ -8,8 +8,7 @@
     "build": "tsc && tsc-alias -p tsconfig.json && npm run copy-views",
     "start": "node dist/index.js",
     "production": "npm run build && npm run start",
-    "init-db": "npx prisma generate && npx prisma migrate dev --name init",
-     "merge-prisma": "prisma-merge ./prisma/models/User.prisma > ./prisma/schema.prisma"
+    "buildPrisma": "npx prisma generate && npx prisma migrate dev --name init"
   },
   "keywords": [],
   "author": {

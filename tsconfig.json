@@ -12,14 +12,12 @@
     "paths": {
       "@fn": ["functions/index.ts"],
       "@email/*": ["email/*"],
-
       "@controller/*": ["controllers/*"],
       "@router": ["routers/index.ts"],
-      "@models": ["models/index.ts"],
-      "@db": ["config/db-conenction.ts"]
+      "@models": ["models/index.ts"]
     }
   },
 
-  "include": ["*.ts"],
+  "include": ["*.ts", "src/functions/buildPrisma.ts"],
   "exclude": ["node_modules"]
 }
