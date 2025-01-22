@@ -1,17 +1,22 @@
+// ...existing code...
 const typeDefs = /* GraphQL */ `
-  type Usuario {
+  type Demo {
     id: ID!
     name: String!
     email: String!
   }
 
   type Query {
-    usuario(id: ID!): Usuario
+    demo(id: ID!): Demo
   }
 
   type Mutation {
-    createUsuario(name: String!, email: String!): Usuario
+    createDemo(name: String!, email: String!): Demo
   }
-`;
 
-export default typeDefs;
+  type Subscription {
+    demoCreated: Demo
+  }
+`
+// ...existing code...
+export default typeDefs

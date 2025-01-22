@@ -34,7 +34,7 @@ prisma.$connect()
   .then(() => {
     log.info("db conectada!");
   })
-  .catch((error) => {
+  .catch((error: any) => {
     log.error(`Error al conectar a la db: ${error}`);
   });
 
@@ -53,6 +53,7 @@ app.use((err: any, req: any, res: any, next: any) => {
   console.error(err.stack);
   res.status(500).send("¡Algo salió mal!");
 });
+
 
 import startServer from "@config/startServer";
 startServer(app);
