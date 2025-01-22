@@ -1,21 +1,26 @@
 import colors from "colors";
 
-const green = (text: string) => {
+const success = (text: string) => {
   return console.log(colors.green(text));
 };
 
-const cyan = (text: string) => {
-  return console.log(colors.cyan(text));
+const warning = (text: string) => {
+  return console.log(colors.yellow(text));
 };
 
-const red = (text: string) => {
+const error = (text: string) => {
   return console.log(colors.red(text));
 };
 
+const info = (text: string) => {
+  return console.log(colors.cyan(text));
+};
+
 const log = {
-  green,
-  cyan,
-  red,
+  success,
+  warning,
+  error,
+  info,
 };
 
 export default log;

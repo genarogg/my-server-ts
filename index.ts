@@ -32,10 +32,10 @@ const prisma = new PrismaClient();
 
 prisma.$connect()
   .then(() => {
-    log.green("db conectada!");
+    log.info("db conectada!");
   })
   .catch((error) => {
-    log.red(`Error al conectar a la db: ${error}`);
+    log.error(`Error al conectar a la db: ${error}`);
   });
 
 // Importar rutas
@@ -52,5 +52,5 @@ app.use((err: any, req: any, res: any, next: any) => {
 
 
 app.listen(PORT, () => {
-  log.cyan(`El servidor esta corriendo en http://localhost:${PORT}`);
+  log.success(`El servidor esta corriendo en http://localhost:${PORT}`);
 });
