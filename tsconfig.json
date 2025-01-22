@@ -27,11 +27,15 @@
       "@graphql/*": [
         "graphql/*"
       ],
+      "@config/*":[
+        "config/*"
+      ]
     }
   },
   "include": [
     "*.ts",
-    "/**/*.ts",
+    "**/**/*.ts",
+    "**/**/**/*.ts",
     "src/**/*.tsx"
   ],
   "exclude": [

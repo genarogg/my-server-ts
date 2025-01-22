@@ -9,7 +9,7 @@ import cors from "cors";
 import { log } from "@fn"
 
 const app = express();
-const PORT = process.env.PORT || 4000;
+
 const CORS_URL = process.env.CORS_URL || "*";
 
 app.use(express.static(path.join(__dirname, "src/public")));
@@ -39,24 +39,7 @@ prisma.$connect()
   });
 
 // Importando grahpql
-import { ApolloServer } from 'apollo-server-express';
-import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
-import resolvers from "@graphql/resolvers";
-import typeDefs from "@graphql/schemas";
-
-async function startApolloServer(app: any) {
-  const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-    introspection: true, // Habilitar introspección en desarrollo
-    plugins: [
-      ApolloServerPluginLandingPageLocalDefault({ embed: true })
-    ],
-  });
-  await server.start();
-  server.applyMiddleware({ app, path: '/graphql' });
-}
-
+import startApolloServer from "@config/graphql";
 startApolloServer(app);
 
 
@@ -71,8 +54,5 @@ app.use((err: any, req: any, res: any, next: any) => {
   res.status(500).send("¡Algo salió mal!");
 });
 
-
-app.listen(PORT, () => {
-  log.success(`El servidor esta corriendo en http://localhost:${PORT}`);
-  log.info(`Graphql esta corriendo en http://localhost:${PORT}/graphql`);
-});
+import startServer from "@config/startServer";
+startServer(app);
