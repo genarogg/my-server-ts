@@ -1,4 +1,4 @@
-const usuarioSchema = `
+const schema =  /* GraphQL */ `
   type Usuario {
     id: ID!
     name: String!
@@ -14,4 +14,4 @@ const usuarioSchema = `
   }
 `;
 
-export default usuarioSchema;
+export default schema;

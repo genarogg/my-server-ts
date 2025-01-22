@@ -1,9 +1,9 @@
 import { buildSchema } from 'graphql';
-import usuarioSchema from './user/schema';
+import demoSchema from './demo/schema';
 
 
 const schema = buildSchema(`
-  ${usuarioSchema}
+  ${demoSchema}
 `);
 
 export default schema;
