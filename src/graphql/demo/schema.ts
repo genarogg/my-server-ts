@@ -1,4 +1,4 @@
-const schema =  /* GraphQL */ `
+const typeDefs = /* GraphQL */ `
   type Usuario {
     id: ID!
     name: String!
@@ -14,4 +14,4 @@ const schema =  /* GraphQL */ `
   }
 `;
 
-export default schema;
+export default typeDefs;

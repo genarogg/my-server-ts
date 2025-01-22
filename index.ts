@@ -39,8 +39,26 @@ prisma.$connect()
   });
 
 // Importando grahpql
-import graphqlRouter from "@graphql/graphql";
-app.use("/graphql", graphqlRouter);
+import { ApolloServer } from 'apollo-server-express';
+import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
+import resolvers from "@graphql/resolvers";
+import typeDefs from "@graphql/schemas";
+
+async function startApolloServer(app: any) {
+  const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    introspection: true, // Habilitar introspección en desarrollo
+    plugins: [
+      ApolloServerPluginLandingPageLocalDefault({ embed: true })
+    ],
+  });
+  await server.start();
+  server.applyMiddleware({ app, path: '/graphql' });
+}
+
+startApolloServer(app);
+
 
 // Importar rutas
 import { inicioRouter } from "@router";
