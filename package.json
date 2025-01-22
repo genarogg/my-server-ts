@@ -4,9 +4,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "npx prisma generate && ts-node-dev -r tsconfig-paths/register index.ts",
-    "copy-views": "copyfiles -u 1 src/**/*.jsx build/src",
+    "copy-views": "copyfiles -u 1 src/**/*.jsx dist/src",
     "build": "tsc && tsc-alias -p tsconfig.json && npm run copy-views",
-    "start": "npm run build && node build/index.js",
+    "start": "npm run build && node dist/index.js",
     "buildPrisma": "ts-node-dev ./src/functions/buildPrisma.ts && npx prisma generate && npx prisma migrate dev"
   },
   "keywords": [],
@@ -39,7 +39,7 @@
     "@types/ejs": "^3.1.5",
     "@types/express": "^4.17.21",
     "@types/jsonwebtoken": "^9.0.7",
-    "@types/node": "^20.14.2",
+    "@types/node": "^22.10.7",
     "@types/nodemailer": "^6.4.15",
     "concurrently": "^8.2.2",
     "copyfiles": "^2.4.1",

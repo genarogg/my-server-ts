@@ -3,7 +3,7 @@
     "target": "esnext",
     "module": "commonjs",
     "jsx": "react",
-    "outDir": "./build",
+    "outDir": "./dist",
     "strict": true,
     "esModuleInterop": true,
     "typeRoots": [
@@ -23,19 +23,16 @@
       ],
       "@router": [
         "routers/index.ts"
-      ],
-      "@models": [
-        "models/index.ts"
       ]
     }
   },
   "include": [
     "*.ts",
-    "**/*.ts",
-    "*/**/*.tsx",
-    "src/functions/buildPrisma.ts"
+    "/**/*.ts",
+    "src/**/*.tsx"
   ],
   "exclude": [
-    "node_modules"
-  ],
+    "node_modules",
+    "build"
+  ]
 }
