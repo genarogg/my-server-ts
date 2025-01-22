@@ -1,3 +1,13 @@
+model Bitacora {
+    id              Int      @id @default(autoincrement())
+    usuario         String
+    accion          String
+    nivel_severidad String
+    ip              String
+    hora            DateTime @default(now())
+    fecha           DateTime @updatedAt
+}
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -8,10 +18,10 @@ datasource db {
 }
 
 model User {
-  id        Int    @id @default(autoincrement())
-  name      String
-  email     String @unique
-  password  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id       Int      @id @default(autoincrement())
+  name     String
+  email    String   @unique
+  password String
+  hora     DateTime @default(now())
+  fecha    DateTime @updatedAt
 }

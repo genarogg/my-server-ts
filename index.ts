@@ -38,9 +38,12 @@ prisma.$connect()
     log.error(`Error al conectar a la db: ${error}`);
   });
 
+// Importando grahpql
+import graphqlRouter from "@graphql/graphql";
+app.use("/graphql", graphqlRouter);
+
 // Importar rutas
 import { inicioRouter } from "@router";
-// import inicioRouter from "./src/routers/inicio";
 
 app.use("/", inicioRouter);
 
@@ -53,4 +56,5 @@ app.use((err: any, req: any, res: any, next: any) => {
 
 app.listen(PORT, () => {
   log.success(`El servidor esta corriendo en http://localhost:${PORT}`);
+  log.info(`Graphql esta corriendo en http://localhost:${PORT}/graphql`);
 });

@@ -19,6 +19,7 @@
   "license": "MIT",
   "description": "",
   "dependencies": {
+    "@graphql-tools/schema": "^10.0.16",
     "@prisma/client": "^6.2.1",
     "argon2": "^0.41.1",
     "colors": "^1.4.0",
@@ -26,8 +27,11 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
-    "express": "^4.19.2",
+    "express": "^4.21.2",
+    "express-graphql": "^0.12.0",
     "express-react-views": "^0.11.0",
+    "graphql": "^15.10.1",
+    "graphql-tag": "^2.12.6",
     "jsonwebtoken": "^9.0.2",
     "nodemailer": "^6.9.14",
     "react": "^16.14.0",
@@ -46,9 +50,10 @@
     "concurrently": "^8.2.2",
     "copyfiles": "^2.4.1",
     "prisma": "^6.2.1",
+    "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
     "tsc-alias": "^1.8.10",
     "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.4.5"
+    "typescript": "^5.7.3"
   }
 }

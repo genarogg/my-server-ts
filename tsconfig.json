@@ -23,7 +23,10 @@
       ],
       "@router": [
         "routers/index.ts"
-      ]
+      ],
+      "@graphql/*": [
+        "graphql/*"
+      ],
     }
   },
   "include": [

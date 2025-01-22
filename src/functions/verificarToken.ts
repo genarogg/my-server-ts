@@ -21,7 +21,6 @@ const verificarToken = async (req: Request, res: Response, next: NextFunction) =
             return res.status(401).json({ message: "El token no contiene un id de usuario válido" });
         }
 
-        // Buscar al usuario en la base de datos usando Prisma
         const usuario = await prisma.user.findUnique({
             where: { id: payload.id },
         });
@@ -44,6 +43,8 @@ const verificarToken = async (req: Request, res: Response, next: NextFunction) =
             message: "Error al verificar el token",
             type: "error"
         });
+    } finally {
+        await prisma.$disconnect();
     }
 };
 

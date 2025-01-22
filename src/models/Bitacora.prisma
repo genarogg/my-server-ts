@@ -1,0 +1,9 @@
+model Bitacora {
+    id              Int      @id @default(autoincrement())
+    usuario         String
+    accion          String
+    nivel_severidad String
+    ip              String
+    hora            DateTime @default(now())
+    fecha           DateTime @updatedAt
+}
