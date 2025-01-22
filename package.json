@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "node:dev": "npx prisma generate && ts-node-dev -r tsconfig-paths/register index.ts",
     "dev": "npx prisma generate && ts-node-dev -r tsconfig-paths/register index.ts",
+    "start": "bun index.ts",
     "copy-views": "copyfiles -u 1 src/**/*.jsx dist/src",
     "build": "tsc && tsc-alias -p tsconfig.json && npm run copy-views",
-    "start": "npm run build && node dist/index.js",
+    "production": "npm run build && node dist/index.js",
     "buildPrisma": "ts-node-dev ./src/functions/buildPrisma.ts && npx prisma generate && npx prisma migrate dev"
   },
   "keywords": [],
