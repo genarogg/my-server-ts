@@ -10,7 +10,6 @@ const startApolloServer = async (app: any) => {
     // Usa cors como middleware
     const CORS_URL = process.env.CORS_URL || "*";
 
-
     const server = new ApolloServer({
         typeDefs,
         resolvers,
